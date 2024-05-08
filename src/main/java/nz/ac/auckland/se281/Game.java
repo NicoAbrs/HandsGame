@@ -5,8 +5,8 @@ import nz.ac.auckland.se281.Main.Difficulty;
 
 /** This class represents the Game is the main entry point. */
 public class Game {
-  private int Game_Round = 1;
-  private String player_name = null; 
+  private int gameRound = 1;
+  private String playerName = null; 
 
   /**
    * This method Starts a Newgame 'Odds and Evens' With all the parameters 
@@ -19,33 +19,37 @@ public class Game {
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     // the first element of options[0]; is the name of the player
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
-    player_name = options[0];
+    playerName = options[0];
   }
 
+  /**
+   * This method 'play' gets the initial user input while also
+   * Checking if it fits the allowable numbers. 0 and 5.
+   */
   public void play() {
-    String user_input; 
-    boolean input_pass = false; 
+    String userInput; 
+    boolean inputPass = false; 
 
     // Print with the round number then update the number of rounds
-    MessageCli.START_ROUND.printMessage(Integer.toString(Game_Round));
-    Game_Round++; 
+    MessageCli.START_ROUND.printMessage(Integer.toString(gameRound));
+    gameRound++; 
 
     // Checking the user input
     do {
       MessageCli.ASK_INPUT.printMessage();
-      user_input = Utils.scanner.nextLine();
-      int integer_user = Integer.parseInt(user_input);
+      userInput = Utils.scanner.nextLine();
+      int integer_user = Integer.parseInt(userInput);
 
       // Checking if it is between 0 and 5
       if ((integer_user > 0) && (integer_user <= 5)) {
-        input_pass = true; 
+        inputPass = true; 
       } else {
         MessageCli.INVALID_INPUT.printMessage();
       }
-    } while(!input_pass);
+    } while(!inputPass);
 
     // Printing the info when implemented correctly
-    MessageCli.PRINT_INFO_HAND.printMessage(player_name, user_input);
+    MessageCli.PRINT_INFO_HAND.printMessage(playerName, userInput);
   }
 
   public void endGame() {}
