@@ -21,9 +21,26 @@ public class Game {
   }
 
   public void play() {
+    String user_input; 
+    boolean input_pass = false; 
+
     // Print with the round number then update the number of rounds
     MessageCli.START_ROUND.printMessage(Integer.toString(Game_Round));
     Game_Round++; 
+
+    // Checking the user input
+    do {
+      MessageCli.ASK_INPUT.printMessage();
+      user_input = Utils.scanner.nextLine();
+      int integer_user = Integer.parseInt(user_input);
+
+      // Checking if it is between 0 and 5
+      if ((integer_user > 0) && (integer_user <= 5)) {
+        input_pass = true; 
+      } else {
+        MessageCli.INVALID_INPUT.printMessage();
+      }
+    } while(!input_pass);
   }
 
   public void endGame() {}
