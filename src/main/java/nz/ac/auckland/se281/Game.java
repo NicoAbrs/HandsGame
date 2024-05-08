@@ -6,6 +6,7 @@ import nz.ac.auckland.se281.Main.Difficulty;
 /** This class represents the Game is the main entry point. */
 public class Game {
   private int Game_Round = 1;
+  private String player_name = null; 
 
   /**
    * This method Starts a Newgame 'Odds and Evens' With all the parameters 
@@ -18,6 +19,7 @@ public class Game {
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     // the first element of options[0]; is the name of the player
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
+    player_name = options[0];
   }
 
   public void play() {
@@ -41,6 +43,9 @@ public class Game {
         MessageCli.INVALID_INPUT.printMessage();
       }
     } while(!input_pass);
+
+    // Printing the info when implemented correctly
+    MessageCli.PRINT_INFO_HAND.printMessage(player_name, user_input);
   }
 
   public void endGame() {}
