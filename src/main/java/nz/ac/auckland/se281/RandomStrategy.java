@@ -1,6 +1,5 @@
 package nz.ac.auckland.se281;
 
-import nz.ac.auckland.se281.Main.Choice;
 
 public class RandomStrategy implements Strategy{
     
@@ -11,15 +10,17 @@ public class RandomStrategy implements Strategy{
      * Returns either ODD or EVEN, a choice ENUM
      */
     @Override
-    public Choice getAction() {
+    public int getAction() {
         // Getting a random number
         int randomInt = Utils.getRandomNumberRange(0, 5); 
 
         // Returning either an even or odd ENUM choice
-        if (Utils.isEven(randomInt)) {
-            return Choice.EVEN;
-        } else {
-            return Choice.ODD; 
-        }
+        // if (Utils.isEven(randomInt)) {
+        //     return Choice.EVEN;
+        // } else {
+        //     return Choice.ODD; 
+        // }
+
+        return randomInt; 
     }
 }

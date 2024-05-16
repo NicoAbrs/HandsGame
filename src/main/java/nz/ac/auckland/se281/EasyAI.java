@@ -1,6 +1,5 @@
 package nz.ac.auckland.se281;
 
-import nz.ac.auckland.se281.Main.Choice;
 
 public class EasyAI implements AI {
 
@@ -17,7 +16,7 @@ public class EasyAI implements AI {
     }
 
     @Override
-    public Choice play() {
+    public int play() {
         setStrategy(new RandomStrategy());
         return strategy.getAction(); 
     }

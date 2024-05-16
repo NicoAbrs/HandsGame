@@ -53,11 +53,11 @@ public class Game {
     // Printing the info when implemented correctly
     MessageCli.PRINT_INFO_HAND.printMessage(playerName, userInput);
 
-    // Getting the AI's play
+    // Getting the AI's fingers for the game
     AI ai = AIFactory.createAi(difficultyChoice); 
-    Choice aiFingers = ai.play(); 
+    int aiFingers = ai.play(); 
 
-    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", aiFingers.toString());
+    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", Integer.toString(aiFingers));
   }
 
   public void endGame() {}
