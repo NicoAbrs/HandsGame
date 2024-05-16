@@ -13,6 +13,7 @@ public class Game {
   private Difficulty difficultyChoice;
   private Choice playerChoice;
   private List<Integer> playerActions = new ArrayList<>(); 
+  private List<String> playerWinHistory = new ArrayList<>(); 
 
   /**
    * This method Starts a Newgame 'Odds and Evens' With all the parameters 
@@ -83,7 +84,9 @@ public class Game {
     String winner = playerName; 
     if (numChoice != playerChoice) {
       winner = "HAL-9000"; 
+      playerWinHistory.add("L"); 
     }
+    playerWinHistory.add("W"); 
 
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(Integer.toString(roundSum), numChoice.toString(), winner);
   }
