@@ -13,7 +13,7 @@ public class Game {
   private Difficulty difficultyChoice;
   private Choice playerChoice;
   private List<Integer> playerActions = new ArrayList<>(); 
-  private List<String> playerWinHistory = new ArrayList<>(); 
+  private List<Integer> playerWinHistory = new ArrayList<>(); 
 
   /**
    * This method Starts a Newgame 'Odds and Evens' With all the parameters 
@@ -71,7 +71,7 @@ public class Game {
 
     // Getting the AI's fingers for the game
     AI ai = AIFactory.createAi(difficultyChoice); 
-    int aiFingers = ai.play(gameRound, playerActions, playerChoice); 
+    int aiFingers = ai.play(gameRound, playerActions, playerChoice, playerWinHistory); 
 
     MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", Integer.toString(aiFingers));
 
@@ -84,10 +84,11 @@ public class Game {
     String winner = playerName; 
     if (numChoice != playerChoice) {
       winner = "HAL-9000"; 
-      playerWinHistory.add("L"); 
+      playerWinHistory.add(0); 
+    } else {
+      playerWinHistory.add(1);
     }
-    playerWinHistory.add("W"); 
-
+    
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(Integer.toString(roundSum), numChoice.toString(), winner);
   }
 

@@ -24,7 +24,7 @@ public class EasyAI implements AI {
      * 
      */
     @Override
-    public int play(int round, List<Integer> playerAction, Choice playerChoice) {
+    public int play(int round, List<Integer> playerActions, Choice playerChoice, List<Integer> playerWinHistory) {
         setStrategy(new RandomStrategy());
         return strategy.getAction(); 
     }

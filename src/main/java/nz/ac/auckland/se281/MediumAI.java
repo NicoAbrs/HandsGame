@@ -32,7 +32,7 @@ public class MediumAI implements AI{
      * @return Returns the number generated from the strategy
      */
     @Override
-    public int play(int round, List<Integer> playerActions, Choice playerChoice) {
+    public int play(int round, List<Integer> playerActions, Choice playerChoice, List<Integer> playerWinHistory) {
         // Between rounds 1 and 3, use the random strategy, onwards use the topStrategy
         if (round <= 3) {
             setStrategy(new RandomStrategy());
