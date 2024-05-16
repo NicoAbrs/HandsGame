@@ -1,7 +1,17 @@
 package nz.ac.auckland.se281;
 
 public class EasyAI implements AI {
+
+    private Strategy strategy;
+
     @Override
-    public void setStrategy() {
+    public Strategy getStrategy() {
+        return this.strategy; 
+    }
+
+    @Override
+    public void setStrategy(String strategyType) {
+        // Compare the strategy enum
+        
     }
 }
