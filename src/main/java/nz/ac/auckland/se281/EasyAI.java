@@ -15,6 +15,10 @@ public class EasyAI implements AI {
         this.strategy = strategyType; 
     }
 
+    /**
+     * Using one strategy for the rest of the round
+     * 
+     */
     @Override
     public int play(int round, int playerAction) {
         setStrategy(new RandomStrategy());

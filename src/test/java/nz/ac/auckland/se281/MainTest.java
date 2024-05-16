@@ -786,6 +786,40 @@ public class MainTest {
     }
 
     @Test
-    public void yourtest() throws Exception {}
+    public void yourtest() throws Exception {
+            Utils.random = new java.util.Random(1);
+      runCommands(
+          NEW_GAME + " EASY ODD",
+          "Valerio",
+          //
+          PLAY,
+          "4",
+          //
+          NEW_GAME + " MEDIUM EVEN",
+          "Valerio",
+          //
+          PLAY,
+          "2",
+          //
+          PLAY,
+          "0",
+          //
+          PLAY,
+          "4",
+          //
+          PLAY,
+          "4",
+          //
+          PLAY,
+          "1");
+      assertContains(START_ROUND.getMessage("5"));
+      assertContains(ASK_INPUT.getMessage());
+      int res = MainTest.getPlay(2, "Valerio", getCaptureOut());
+      assertEquals(0, res);
+      res = MainTest.getPlay(3, "Valerio", getCaptureOut());
+      assertEquals(4, res);
+      res = MainTest.getPlay(5, "HAL-9000", getCaptureOut());
+      assertTrue(Utils.isOdd(res));
+    }
   }
 }
