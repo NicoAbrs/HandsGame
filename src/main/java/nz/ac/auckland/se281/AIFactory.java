@@ -8,6 +8,8 @@ public class AIFactory {
         switch (difficulty) {
             case EASY: 
                 return new EasyAI(); 
+            case MEDIUM: 
+                return new MediumAI(); 
             default: 
                 System.out.println("Error");
             return null; 

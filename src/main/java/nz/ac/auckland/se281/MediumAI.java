@@ -1,8 +1,8 @@
 package nz.ac.auckland.se281;
 
+import javax.management.MBeanRegistration;
 
-public class EasyAI implements AI {
-
+public class MediumAI implements AI{
     private Strategy strategy; 
 
     @Override

@@ -59,24 +59,30 @@ public class Game {
 
     // Getting the AI's fingers for the game
     AI ai = AIFactory.createAi(difficultyChoice); 
-    int aiFingers = ai.play(); 
+    int aiFingers = ai.play(gameRound); 
 
     MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", Integer.toString(aiFingers));
 
     // Checking who wins
     // Getting the sum
-    
     int roundSum = aiFingers + integerUser; 
     numChoice = getChoice(roundSum);
 
+    // Changing the variable names for the print_outcome_round
     String winner = playerName; 
     if (numChoice != playerChoice) {
-      winner = "HAL_9000"; 
+      winner = "HAL-9000"; 
     }
 
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(Integer.toString(roundSum), numChoice.toString(), winner);
   }
 
+  /**
+   * This method 'getChoice' finds the choice enum that the roundSum 
+   * equates to. 
+   * @param roundSum The sum of the integers in the round
+   * @return the choice ODD/EVEN
+   */
   public Choice getChoice(int roundSum) {
     if (Utils.isEven(roundSum)) {
       return Choice.EVEN;
