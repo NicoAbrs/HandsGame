@@ -11,7 +11,7 @@ public class AIFactory {
             case MEDIUM: 
                 return new MediumAI(); 
             case HARD: 
-                return new MediumAI();
+                return new HardAI();
             default: 
                 System.out.println("Error");
             return null; 
