@@ -3,17 +3,11 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 import java.util.List;
 
+import nz.ac.auckland.se281.Main.Choice;
+
 public class MediumAI implements AI{
     private Strategy strategy; 
-    private List<Integer> playerActions = new ArrayList<>(); 
-
-    /**
-     * This method Resets the History for the list 'playerActions'
-     */
-    public void resetHistory() {
-        playerActions.clear();
-    }
-
+    
     @Override
     public Strategy getStrategy() {
         return this.strategy; 
@@ -38,16 +32,15 @@ public class MediumAI implements AI{
      * @return Returns the number generated from the strategy
      */
     @Override
-    public int play(int round, int playerAction) {
-        // Get the action from the player and add to the list
-        playerActions.add(playerAction); 
-
+    public int play(int round, List<Integer> playerActions, Choice playerChoice) {
         // Between rounds 1 and 3, use the random strategy, onwards use the topStrategy
         if (round <= 3) {
             setStrategy(new RandomStrategy());
         } else if (round > 3) {
+            
             setStrategy(new TopStrategy());
             // Updates the count in topStrategy, which then decides what they use
+            ((TopStrategy) strategy).setPlayerChoice(playerChoice); 
             for (int action : playerActions) {
                 ((TopStrategy) strategy).updateCounts(action);
             }

@@ -1,5 +1,8 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
 
@@ -9,6 +12,7 @@ public class Game {
   private String playerName = null; 
   private Difficulty difficultyChoice;
   private Choice playerChoice;
+  private List<Integer> playerActions = new ArrayList<>(); 
 
   /**
    * This method Starts a Newgame 'Odds and Evens' With all the parameters 
@@ -26,6 +30,9 @@ public class Game {
     this.difficultyChoice = difficulty; 
     this.playerChoice = choice; 
     this.gameRound = 1; 
+
+    // Clear history
+    playerActions.clear(); 
   }
 
   /**
@@ -55,13 +62,15 @@ public class Game {
         MessageCli.INVALID_INPUT.printMessage();
       }
     } while(!inputPass);
+    // Adding to the history of playerInputs
+    playerActions.add(integerUser);
 
     // Printing the info when implemented correctly
     MessageCli.PRINT_INFO_HAND.printMessage(playerName, userInput);
 
     // Getting the AI's fingers for the game
     AI ai = AIFactory.createAi(difficultyChoice); 
-    int aiFingers = ai.play(gameRound, integerUser); 
+    int aiFingers = ai.play(gameRound, playerActions, playerChoice); 
 
     MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", Integer.toString(aiFingers));
 

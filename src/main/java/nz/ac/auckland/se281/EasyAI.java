@@ -1,5 +1,9 @@
 package nz.ac.auckland.se281;
 
+import java.util.List;
+
+import nz.ac.auckland.se281.Main.Choice;
+
 
 public class EasyAI implements AI {
 
@@ -20,7 +24,7 @@ public class EasyAI implements AI {
      * 
      */
     @Override
-    public int play(int round, int playerAction) {
+    public int play(int round, List<Integer> playerAction, Choice playerChoice) {
         setStrategy(new RandomStrategy());
         return strategy.getAction(); 
     }

@@ -3,6 +3,9 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 import java.util.List;
 
+import nz.ac.auckland.se281.Main.Choice;
+
+
 public class HardAI implements AI{
     private Strategy strategy; 
     private List<Integer> playerActions = new ArrayList<>();
@@ -34,9 +37,7 @@ public class HardAI implements AI{
      * @return Returns the number generated from the strategy
      */
     @Override
-    public int play(int round, int playerAction) {
-        // Get the action from the player and add to the list
-        playerActions.add(playerAction); 
+    public int play(int round, List<Integer> playerAction, Choice playerChoice) {
 
         // Between rounds 1 and 3, use the random strategy, onwards use the topStrategy
         if (round <= 3) {
