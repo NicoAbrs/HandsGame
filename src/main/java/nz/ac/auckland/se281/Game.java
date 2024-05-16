@@ -8,6 +8,7 @@ public class Game {
   private int gameRound = 1;
   private String playerName = null; 
   private Difficulty difficultyChoice;
+  private Choice playerChoice;
 
   /**
    * This method Starts a Newgame 'Odds and Evens' With all the parameters 
@@ -22,6 +23,7 @@ public class Game {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
     playerName = options[0];
     this.difficultyChoice = difficulty; 
+    this.playerChoice = choice; 
   }
 
   /**
@@ -31,6 +33,8 @@ public class Game {
   public void play() {
     String userInput; 
     boolean inputPass = false; 
+    int integerUser; 
+    Choice numChoice; 
 
     // Print with the round number then update the number of rounds
     MessageCli.START_ROUND.printMessage(Integer.toString(gameRound));
@@ -40,10 +44,10 @@ public class Game {
     do {
       MessageCli.ASK_INPUT.printMessage();
       userInput = Utils.scanner.nextLine();
-      int integer_user = Integer.parseInt(userInput);
+      integerUser = Integer.parseInt(userInput);
 
       // Checking if it is between 0 and 5
-      if ((integer_user >= 0) && (integer_user <= 5)) {
+      if ((integerUser >= 0) && (integerUser <= 5)) {
         inputPass = true; 
       } else {
         MessageCli.INVALID_INPUT.printMessage();
@@ -58,6 +62,27 @@ public class Game {
     int aiFingers = ai.play(); 
 
     MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", Integer.toString(aiFingers));
+
+    // Checking who wins
+    // Getting the sum
+    
+    int roundSum = aiFingers + integerUser; 
+    numChoice = getChoice(roundSum);
+
+    String winner = playerName; 
+    if (numChoice != playerChoice) {
+      winner = "HAL_9000"; 
+    }
+
+    MessageCli.PRINT_OUTCOME_ROUND.printMessage(Integer.toString(roundSum), numChoice.toString(), winner);
+  }
+
+  public Choice getChoice(int roundSum) {
+    if (Utils.isEven(roundSum)) {
+      return Choice.EVEN;
+    } else {
+      return Choice.ODD; 
+    }
   }
 
   public void endGame() {}
