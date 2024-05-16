@@ -7,6 +7,7 @@ import nz.ac.auckland.se281.Main.Difficulty;
 public class Game {
   private int gameRound = 1;
   private String playerName = null; 
+  private Difficulty difficultyChoice;
 
   /**
    * This method Starts a Newgame 'Odds and Evens' With all the parameters 
@@ -20,6 +21,7 @@ public class Game {
     // the first element of options[0]; is the name of the player
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
     playerName = options[0];
+    this.difficultyChoice = difficulty; 
   }
 
   /**
@@ -50,6 +52,12 @@ public class Game {
 
     // Printing the info when implemented correctly
     MessageCli.PRINT_INFO_HAND.printMessage(playerName, userInput);
+
+    // Getting the AI's play
+    AI ai = AIFactory.createAi(difficultyChoice); 
+    Choice aiFingers = ai.play(); 
+
+    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", aiFingers.toString());
   }
 
   public void endGame() {}

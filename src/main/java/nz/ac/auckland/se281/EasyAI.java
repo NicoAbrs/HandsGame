@@ -1,8 +1,10 @@
 package nz.ac.auckland.se281;
 
+import nz.ac.auckland.se281.Main.Choice;
+
 public class EasyAI implements AI {
 
-    private Strategy strategy;
+    private Strategy strategy; 
 
     @Override
     public Strategy getStrategy() {
@@ -10,8 +12,13 @@ public class EasyAI implements AI {
     }
 
     @Override
-    public void setStrategy(String strategyType) {
-        // Compare the strategy enum
-        
+    public void setStrategy(Strategy strategyType) {
+        this.strategy = strategyType; 
+    }
+
+    @Override
+    public Choice play() {
+        setStrategy(new RandomStrategy());
+        return strategy.getAction(); 
     }
 }
