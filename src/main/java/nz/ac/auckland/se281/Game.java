@@ -59,7 +59,7 @@ public class Game {
 
     // Getting the AI's fingers for the game
     AI ai = AIFactory.createAi(difficultyChoice); 
-    int aiFingers = ai.play(gameRound); 
+    int aiFingers = ai.play(gameRound, integerUser); 
 
     MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", Integer.toString(aiFingers));
 

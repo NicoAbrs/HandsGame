@@ -1,7 +1,5 @@
 package nz.ac.auckland.se281;
 
-import javax.management.MBeanRegistration;
-
 public class MediumAI implements AI{
     private Strategy strategy; 
 
@@ -16,8 +14,14 @@ public class MediumAI implements AI{
     }
 
     @Override
-    public int play(int round) {
-        setStrategy(new RandomStrategy());
+    public int play(int round, int playerAction) {
+        if (round <= 3) {
+            setStrategy(new RandomStrategy());
+        } else if (round > 3) {
+            setStrategy(new TopStrategy());
+            ((TopStrategy) strategy).updateCounts(playerAction); 
+        }
+        
         return strategy.getAction(); 
     }
 }
