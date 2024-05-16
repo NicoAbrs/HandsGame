@@ -43,7 +43,7 @@ public class Game {
       int integer_user = Integer.parseInt(userInput);
 
       // Checking if it is between 0 and 5
-      if ((integer_user > 0) && (integer_user <= 5)) {
+      if ((integer_user >= 0) && (integer_user <= 5)) {
         inputPass = true; 
       } else {
         MessageCli.INVALID_INPUT.printMessage();
