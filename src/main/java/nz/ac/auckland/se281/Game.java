@@ -47,50 +47,54 @@ public class Game {
     int integerUser; 
     Choice numChoice; 
 
-    // Print with the round number then update the number of rounds
-    MessageCli.START_ROUND.printMessage(Integer.toString(gameRound));
-    gameRound++; 
-
-    // Checking the user input
-    do {
-      MessageCli.ASK_INPUT.printMessage();
-      userInput = Utils.scanner.nextLine();
-      integerUser = Integer.parseInt(userInput);
-
-      // Checking if it is between 0 and 5
-      if ((integerUser >= 0) && (integerUser <= 5)) {
-        inputPass = true; 
-      } else {
-        MessageCli.INVALID_INPUT.printMessage();
-      }
-    } while(!inputPass);
-    // Adding to the history of playerInputs
-    playerActions.add(integerUser);
-
-    // Printing the info when implemented correctly
-    MessageCli.PRINT_INFO_HAND.printMessage(playerName, userInput);
-
-    // Getting the AI's fingers for the game
-    AI ai = AIFactory.createAi(difficultyChoice); 
-    int aiFingers = ai.play(gameRound, playerActions, playerChoice, playerWinHistory); 
-
-    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", Integer.toString(aiFingers));
-
-    // Checking who wins
-    // Getting the sum
-    int roundSum = aiFingers + integerUser; 
-    numChoice = getChoice(roundSum);
-
-    // Changing the variable names for the print_outcome_round
-    String winner = playerName; 
-    if (numChoice != playerChoice) {
-      winner = "HAL-9000"; 
-      playerWinHistory.add(0); 
+    if (playerName == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
     } else {
-      playerWinHistory.add(1);
+      // Print with the round number then update the number of rounds
+      MessageCli.START_ROUND.printMessage(Integer.toString(gameRound));
+      gameRound++; 
+
+      // Checking the user input
+      do {
+        MessageCli.ASK_INPUT.printMessage();
+        userInput = Utils.scanner.nextLine();
+        integerUser = Integer.parseInt(userInput);
+
+        // Checking if it is between 0 and 5
+        if ((integerUser >= 0) && (integerUser <= 5)) {
+          inputPass = true; 
+        } else {
+          MessageCli.INVALID_INPUT.printMessage();
+        }
+      } while(!inputPass);
+      // Adding to the history of playerInputs
+      playerActions.add(integerUser);
+
+      // Printing the info when implemented correctly
+      MessageCli.PRINT_INFO_HAND.printMessage(playerName, userInput);
+
+      // Getting the AI's fingers for the game
+      AI ai = AIFactory.createAi(difficultyChoice); 
+      int aiFingers = ai.play(gameRound, playerActions, playerChoice, playerWinHistory); 
+
+      MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", Integer.toString(aiFingers));
+
+      // Checking who wins
+      // Getting the sum
+      int roundSum = aiFingers + integerUser; 
+      numChoice = getChoice(roundSum);
+
+      // Changing the variable names for the print_outcome_round
+      String winner = playerName; 
+      if (numChoice != playerChoice) {
+        winner = "HAL-9000"; 
+        playerWinHistory.add(0); 
+      } else {
+        playerWinHistory.add(1);
+      }
+      
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(Integer.toString(roundSum), numChoice.toString(), winner);
     }
-    
-    MessageCli.PRINT_OUTCOME_ROUND.printMessage(Integer.toString(roundSum), numChoice.toString(), winner);
   }
 
   /**
