@@ -113,5 +113,11 @@ public class Game {
 
   public void endGame() {}
 
-  public void showStats() {}
+  public void showStats() {
+    if (playerName == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+    } else {
+      
+    }
+  }
 }
