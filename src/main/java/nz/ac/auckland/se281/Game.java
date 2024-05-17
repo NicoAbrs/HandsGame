@@ -10,6 +10,7 @@ import nz.ac.auckland.se281.Main.Difficulty;
 public class Game {
   private int gameRound = 1;
   private String playerName = null; 
+  private String winner = null;
   private Difficulty difficultyChoice;
   private Choice playerChoice;
   private List<Integer> playerActions = new ArrayList<>(); 
@@ -112,7 +113,14 @@ public class Game {
   }
 
   public void endGame() {
-    
+    // showStats and print winner
+    showStats();
+    if (!winner.equals("Tie!")) {
+      MessageCli.PRINT_END_GAME.printMessage(winner);
+    } else {
+      MessageCli.PRINT_END_GAME_TIE.printMessage();
+    }
+
     // Reset the playerName
     playerName = null;
   }
@@ -133,6 +141,15 @@ public class Game {
 
       // AI WIns
       MessageCli.PRINT_PLAYER_WINS.printMessage("HAL-9000",Integer.toString(playerRoundsLost), Integer.toString(playerRoundsWon));
+
+      // Setting who won
+      if (playerRoundsWon > playerRoundsLost) {
+        winner = playerName; 
+      } else if (playerRoundsWon < playerRoundsLost) {
+        winner = "HAL-9000"; 
+      } else {
+        winner = "Tie!";
+      }
     }
   }
 }
