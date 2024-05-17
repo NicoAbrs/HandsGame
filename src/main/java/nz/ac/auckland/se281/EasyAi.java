@@ -6,6 +6,7 @@ import nz.ac.auckland.se281.Main.Choice;
 public class EasyAi implements Ai {
 
   private Strategy strategy;
+  private strategies we;
 
   /**
    * Setter method for the strategy for the AI.
