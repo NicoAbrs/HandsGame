@@ -75,7 +75,7 @@ public class Game {
       MessageCli.PRINT_INFO_HAND.printMessage(playerName, userInput);
 
       // Getting the AI's fingers for the game
-      AI ai = AIFactory.createAi(difficultyChoice);
+      Ai ai = AiFactory.createAi(difficultyChoice);
       int aiFingers = ai.play(gameRound, playerActions, playerChoice, playerWinHistory);
 
       MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", Integer.toString(aiFingers));

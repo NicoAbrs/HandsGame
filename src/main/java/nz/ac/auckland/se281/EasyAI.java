@@ -3,7 +3,7 @@ package nz.ac.auckland.se281;
 import java.util.List;
 import nz.ac.auckland.se281.Main.Choice;
 
-public class EasyAI implements AI {
+public class EasyAi implements Ai {
 
   private Strategy strategy;
 
