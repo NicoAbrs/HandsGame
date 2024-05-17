@@ -8,15 +8,6 @@ import nz.ac.auckland.se281.Main.Choice;
 
 public class HardAI implements AI{
     private Strategy strategy; 
-    private List<Integer> playerActions = new ArrayList<>();
-    
-    /**
-     * This method Resets the History for the list 'playerActions'
-     */
-    public void resetHistory() {
-        playerActions.clear();
-    }
-
 
     @Override
     public Strategy getStrategy() {
@@ -38,12 +29,14 @@ public class HardAI implements AI{
      */
     @Override
     public int play(int round, List<Integer> playerActions, Choice playerChoice, List<Integer> playerWinHistory) {
-        // Between rounds 1 and 3, use the random strategy, onwards use the topStrategy
+        // Between rounds 1 and 3, use the random strategy
         if (round <= 3) {
             setStrategy(new RandomStrategy());
         } else if (round > 3) {
             setStrategy(new RandomStrategy());
+            // Checking the most recent win
             if (playerWinHistory.get(playerWinHistory.size() - 1) == 0) {
+                // Switching the strategy if it doesnt work
                 if (strategy instanceof RandomStrategy) {
                     setStrategy(new TopStrategy());
                     ((TopStrategy) strategy).setPlayerChoice(playerChoice); 
@@ -51,8 +44,6 @@ public class HardAI implements AI{
                         ((TopStrategy) strategy).updateCounts(action);
                     }
                 }
-            } else {
-                setStrategy(new RandomStrategy());
             }
         } else {
             System.out.println("Error");

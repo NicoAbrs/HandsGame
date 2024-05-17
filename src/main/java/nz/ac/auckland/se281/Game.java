@@ -34,6 +34,7 @@ public class Game {
 
     // Clear history
     playerActions.clear(); 
+    playerWinHistory.clear(); 
   }
 
   /**
