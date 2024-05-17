@@ -13,14 +13,6 @@ public class RandomStrategy implements Strategy{
     public int getAction() {
         // Getting a random number
         int randomInt = Utils.getRandomNumberRange(0, 5); 
-
-        // Returning either an even or odd ENUM choice
-        // if (Utils.isEven(randomInt)) {
-        //     return Choice.EVEN;
-        // } else {
-        //     return Choice.ODD; 
-        // }
-
         return randomInt; 
     }
 }

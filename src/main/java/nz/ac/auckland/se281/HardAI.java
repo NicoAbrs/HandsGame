@@ -42,18 +42,23 @@ public class HardAI implements AI{
         if (round <= 3) {
             setStrategy(new RandomStrategy());
         } else if (round > 3) {
-            
-            return 0; 
-
-            // setStrategy(new TopStrategy());
-            // // Updates the count in topStrategy, which then decides what they use
-            // ((TopStrategy) strategy).setPlayerChoice(playerChoice); 
-            // for (int action : playerActions) {
-            //     ((TopStrategy) strategy).updateCounts(action);
+            setStrategy(new RandomStrategy());
+            if (playerWinHistory.get(playerWinHistory.size() - 1) == 0) {
+                if (strategy instanceof RandomStrategy) {
+                    setStrategy(new TopStrategy());
+                    ((TopStrategy) strategy).setPlayerChoice(playerChoice); 
+                    for (int action : playerActions) {
+                        ((TopStrategy) strategy).updateCounts(action);
+                    }
+                }
+            } else {
+                setStrategy(new RandomStrategy());
+            }
         } else {
             System.out.println("Error");
         }
-        
+        // Print the chosen strategy 
+        System.out.println("Chosen strategy: " + strategy.getClass().getSimpleName());
         // Call the chosen strategy action
         return strategy.getAction(); 
     }
