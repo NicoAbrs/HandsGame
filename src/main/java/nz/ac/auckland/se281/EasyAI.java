@@ -18,7 +18,11 @@ public class EasyAI implements AI {
     this.strategy = strategyType;
   }
 
-  /** Using one strategy for the rest of the round */
+  /**
+   * Method play uses a random number generator generate the AI's play
+   *
+   * @return Integer number of fingers
+   */
   @Override
   public int play(
       int round, List<Integer> playerActions, Choice playerChoice, List<Integer> playerWinHistory) {

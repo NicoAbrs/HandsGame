@@ -39,7 +39,8 @@ public class Game {
 
   /**
    * This method 'play' gets the initial user input while also Checking if it fits the allowable
-   * numbers. 0 and 5.
+   * numbers. 0 and 5. This plays the entire game controlling and calculating the AI strategies and
+   * Factory creation based on the inputs.
    */
   public void play() {
     String userInput;
@@ -112,6 +113,12 @@ public class Game {
     }
   }
 
+  /**
+   * Method endGame prints out the stats and the winner of all the rounds and resets everything to
+   * get Ready for the new game
+   *
+   * <p>No return as it just prints.
+   */
   public void endGame() {
     // showStats and print winner
     showStats();
@@ -125,6 +132,12 @@ public class Game {
     playerName = null;
   }
 
+  /**
+   * Method showStats prints out how many times the player lost and won and the same thing for the
+   * AI. This is used in other methods
+   *
+   * <p>No return as it just prints.
+   */
   public void showStats() {
     int playerRoundsWon = 0;
     int playerRoundsLost = 0;
