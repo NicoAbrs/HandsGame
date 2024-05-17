@@ -111,13 +111,28 @@ public class Game {
     }
   }
 
-  public void endGame() {}
+  public void endGame() {
+    
+    // Reset the playerName
+    playerName = null;
+  }
 
   public void showStats() {
+    int playerRoundsWon = 0; 
+    int playerRoundsLost = 0;
+
     if (playerName == null) {
       MessageCli.GAME_NOT_STARTED.printMessage();
     } else {
+      // Find out the playerRoundsWon 
+      playerRoundsWon = playerWinHistory.stream().mapToInt(Integer::intValue).sum(); 
+      playerRoundsLost = playerWinHistory.size() - playerRoundsWon; 
       
+      // Player Wins
+      MessageCli.PRINT_PLAYER_WINS.printMessage(playerName, Integer.toString(playerRoundsWon), Integer.toString(playerRoundsLost));
+
+      // AI WIns
+      MessageCli.PRINT_PLAYER_WINS.printMessage("HAL-9000",Integer.toString(playerRoundsLost), Integer.toString(playerRoundsWon));
     }
   }
 }

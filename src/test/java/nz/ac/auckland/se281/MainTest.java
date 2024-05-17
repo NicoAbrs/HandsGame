@@ -788,30 +788,28 @@ public class MainTest {
     @Test
     public void yourtest() throws Exception {
             Utils.random = new java.util.Random(1);
-      runCommands(
-          NEW_GAME + " EASY ODD",
-          "Valerio",
-          //
-          PLAY,
-          "4",
-          //
-          NEW_GAME + " MEDIUM EVEN",
-          "Valerio",
-          //
-          PLAY,
-          "2",
-          //
-          PLAY,
-          "0",
-          //
-          PLAY,
-          "4",
-          //
-          PLAY,
-          "4",
-          //
-          PLAY,
-          "1");
+            runCommands(
+              NEW_GAME + " HARD ODD",
+              "Valerio",
+              //
+              PLAY,
+              "2",
+              //
+              PLAY,
+              "0",
+              //
+              PLAY,
+              "4",
+              //
+              PLAY,
+              "4",
+              //
+              PLAY,
+              "1",
+              //
+              PLAY,
+              "1"
+              );
       assertContains(START_ROUND.getMessage("5"));
       assertContains(ASK_INPUT.getMessage());
       int res = MainTest.getPlay(2, "Valerio", getCaptureOut());
