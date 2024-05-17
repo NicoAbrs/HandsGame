@@ -6,11 +6,12 @@ import nz.ac.auckland.se281.Main.Choice;
 public class HardAI implements AI {
   private Strategy strategy;
 
-  @Override
-  public Strategy getStrategy() {
-    return this.strategy;
-  }
-
+  /**
+   * Setter method for the strategy for the AI.
+   *
+   * @param strategyType The strategy to be used by the AI. This should be an instance of a class
+   *     that implements the Strategy interface.
+   */
   @Override
   public void setStrategy(Strategy strategyType) {
     this.strategy = strategyType;
