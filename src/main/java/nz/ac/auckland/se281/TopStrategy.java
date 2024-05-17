@@ -8,7 +8,7 @@ public class TopStrategy implements Strategy {
   private Choice playerChoice;
 
   /**
-   * Method UpdateCounts categorises the playerActions between Even or Odd tendencies
+   * Method UpdateCounts categorises the playerActions between Even or Odd tendencies.
    *
    * @param playerAction The fingers the player puts
    */
@@ -21,7 +21,7 @@ public class TopStrategy implements Strategy {
   }
 
   /**
-   * A Setter method for playerChoice for use in the getAction and TopStrategy
+   * A Setter method for playerChoice for use in the getAction and TopStrategy.
    *
    * @param playerChoice The player choice between ODD or EVEN
    */

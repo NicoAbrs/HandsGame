@@ -18,7 +18,7 @@ public class MediumAi implements Ai {
   }
 
   /**
-   * Method 'play' Deals with the real time strategy changes during the game, changing f
+   * Method 'play' Deals with the real time strategy changes during the game, Changing strategies.
    *
    * @param round The current round number in the game, dictates the strategy change
    * @param playerAction The number the player chooses, needed for TopStrategy

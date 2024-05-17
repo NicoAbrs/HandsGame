@@ -19,7 +19,7 @@ public class EasyAi implements Ai {
   }
 
   /**
-   * Method play uses a random number generator generate the AI's play
+   * Method play uses a random number generator generate the AI's play.
    *
    * @return Integer number of fingers
    */

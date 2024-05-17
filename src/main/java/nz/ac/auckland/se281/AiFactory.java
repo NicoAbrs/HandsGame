@@ -5,7 +5,7 @@ import nz.ac.auckland.se281.Main.Difficulty;
 public class AiFactory {
 
   /**
-   * createAI is the method which creates the AI behaviour based on The factory design pattern
+   * createAI is the method which creates the AI behaviour based on The factory design pattern.
    *
    * @param difficulty Chooses the AI based on the difficulty
    * @return A new instance of the specific AI
